@@ -1,0 +1,13 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+language: R
+cache: packages
+
+before_install:
+    - fname=travis_helpers.sh
+    - wget -O ${fname} http://bit.ly/travis_helpers
+    - cat ${fname}; source ${fname}; rm ${fname}
+    - pip install --user numpy
+    - export TRAVIS_PYTHON_VERSION=3.7
+    - setup_python ${TRAVIS_PYTHON_VERSION}.7 false ;
+    - install_python_requirements ;

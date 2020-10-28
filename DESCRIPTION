@@ -1,0 +1,33 @@
+Package: pycwa
+Title: Parse Actigraph 'Axivity' 'CWA' Accelerometer Data
+Version: 0.1.0
+Authors@R: c(
+    person(given = "John",
+           family = "Muschelli",
+           email = "muschellij2@gmail.com",
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-6469-1750"))
+    )
+Description: Implements a parser for actigraphs 
+    'Axivity' Continuous Wave 'Accelerometer' ('CWA')
+    data format (with extension '.cwa') for accelerometer samples, 
+    called from Python. Activity samples can be easily read into a 
+    matrix or data.frame. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    reticulate,
+    R.utils,
+    tools,
+    lubridate,
+    dplyr,
+    tibble,
+    utils,
+    readr
+Suggests: 
+    testthat
+Depends: 
+    R (>= 2.10)

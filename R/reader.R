@@ -101,6 +101,10 @@ py_convert_cwa = function(
   javaHeapSpace = NULL) {
 
   check_cwa_packages()
+  java = Sys.which("java")
+  if (!file.exists(java)) {
+    warning("Java is required for py_convert_cwa, cannot find java in path")
+  }
 
   rawOutput = TRUE
   npyOutput = TRUE

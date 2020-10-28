@@ -31,3 +31,5 @@ Suggests:
     testthat
 Depends: 
     R (>= 2.10)
+URL: https://github.com/muschellij2/pycwa
+BugReports: https://github.com/muschellij2/pycwa/issues

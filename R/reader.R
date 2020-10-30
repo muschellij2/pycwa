@@ -27,6 +27,7 @@ check_cwa_packages = function() {
                  "pycwa may not work")
     warning(msg)
   }
+  return(all(res))
 }
 
 
@@ -255,5 +256,6 @@ py_read_cwa = function(file, ...) {
     )
   )
   out$time = lubridate::as_datetime(out$time)
+  # out$time = lubridate::with_tz(out$time, tzone = "UTC")
   out
 }

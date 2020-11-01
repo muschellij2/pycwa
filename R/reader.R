@@ -256,6 +256,6 @@ py_read_cwa = function(file, ...) {
     )
   )
   out$time = lubridate::as_datetime(out$time)
-  # out$time = lubridate::with_tz(out$time, tzone = "UTC")
+  out$time = lubridate::with_tz(out$time, tzone = "UTC")
   out
 }

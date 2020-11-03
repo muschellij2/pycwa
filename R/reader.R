@@ -263,6 +263,7 @@ py_read_cwa = function(file, ...) {
       z = readr::col_double()
     )
   )
+  attr(out, "files") = result
   out$time = lubridate::as_datetime(out$time)
   # out$time = lubridate::with_tz(out$time, tzone = "UTC")
   out

@@ -101,3 +101,12 @@ Get overall activity summary from input epoch file. This is achieved by
 \item derive main movement summaries (overall, weekday/weekend, and hour)
 }
 }
+\examples{
+epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
+    package = "pycwa")
+\donttest{
+  if (pycwa:::check_cwa_packages()) {
+    sums = pycwa::activity_summary(epoch_file, model_dir = tempdir())
+  }
+}
+}

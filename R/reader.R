@@ -12,6 +12,9 @@ check_cwa_packages = function() {
   )
   n = names(packages)
   names(packages)[n == ""] = packages[n == ""]
+  if (!reticulate::py_available(initialize = TRUE)) {
+    return(FALSE)
+  }
   sapply(packages, reticulate::py_module_available)
   res = sapply(packages, reticulate::py_module_available)
 
@@ -75,9 +78,14 @@ check_cwa_packages = function() {
 #' @return A list of files for the output
 #' @examples
 #' file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
-#' res = py_convert_cwa(file)
-#' df = py_read_cwa(file, startTime = "2019-02-26T10:55:15")
-#' sums = activity_summary(res$epochFile, model_dir = tempdir())
+#' if (pycwa:::check_cwa_packages()) {
+#'     res = pycwa::py_convert_cwa(file)
+#' }
+#' \donttest{
+#'   if (pycwa:::check_cwa_packages()) {
+#'     df = pycwa::py_read_cwa(file, startTime = "2019-02-26T10:55:15")
+#'   }
+#' }
 py_convert_cwa = function(
   file,
   skipCalibration = TRUE,
@@ -256,6 +264,6 @@ py_read_cwa = function(file, ...) {
     )
   )
   out$time = lubridate::as_datetime(out$time)
-  out$time = lubridate::with_tz(out$time, tzone = "UTC")
+  # out$time = lubridate::with_tz(out$time, tzone = "UTC")
   out
 }

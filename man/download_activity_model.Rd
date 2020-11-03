@@ -24,5 +24,7 @@ The file path to the tarball
 Download Activity Model
 }
 \examples{
+\donttest{
 download_activity_model(outdir = tempdir())
+}
 }

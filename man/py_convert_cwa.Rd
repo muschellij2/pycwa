@@ -94,7 +94,12 @@ Read Axivity CWA file
 }
 \examples{
 file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
-res = py_convert_cwa(file)
-df = py_read_cwa(file, startTime = "2019-02-26T10:55:15")
-sums = activity_summary(res$epochFile, model_dir = tempdir())
+if (pycwa:::check_cwa_packages()) {
+    res = pycwa::py_convert_cwa(file)
+}
+\donttest{
+  if (pycwa:::check_cwa_packages()) {
+    df = pycwa::py_read_cwa(file, startTime = "2019-02-26T10:55:15")
+  }
+}
 }

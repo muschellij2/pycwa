@@ -48,6 +48,14 @@
 #' @export
 #'
 #' @return A list of data
+#' @examples
+#' epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
+#'     package = "pycwa")
+#' \donttest{
+#'   if (pycwa:::check_cwa_packages()) {
+#'     sums = pycwa::activity_summary(epoch_file, model_dir = tempdir())
+#'   }
+#' }
 activity_summary = function(
   epochFile,
   nonWearFile = NULL,
@@ -120,7 +128,7 @@ activity_summary = function(
     stationaryStd = stationaryStd,
     mgCutPointMVPA = mgCutPointMVPA,
     mgCutPointVPA = mgCutPointVPA,
-    minNonWearDuration= minNonWearDuration,
+    minNonWearDuration = minNonWearDuration,
     activityModel = activityModel,
     intensityDistribution = intensityDistribution,
     useRecommendedImputation = useRecommendedImputation,

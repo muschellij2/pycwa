@@ -7,7 +7,9 @@
 #' @return The file path to the tarball
 #' @export
 #' @examples
+#' \donttest{
 #' download_activity_model(outdir = tempdir())
+#' }
 download_activity_model = function(
   model = c("doherty-may20", "willetts-may20"),
   outdir = NULL,

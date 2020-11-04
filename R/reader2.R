@@ -49,6 +49,7 @@
 #'
 #' @return A list of data
 #' @examples
+#' reticulate::py_config()
 #' epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
 #'     package = "pycwa")
 #' \donttest{

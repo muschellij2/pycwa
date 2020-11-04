@@ -93,6 +93,7 @@ A list of files for the output
 Read Axivity CWA file
 }
 \examples{
+reticulate::py_config()
 file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
 if (pycwa:::have_python_requirements()) {
     res = pycwa::py_convert_cwa(file)

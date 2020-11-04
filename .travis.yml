@@ -13,7 +13,6 @@ before_install:
     - install_python_requirements ;
     - reticulate_install_python_requirements ;
 
-
 os:
   - linux
   - osx

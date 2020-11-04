@@ -52,7 +52,7 @@
 #' epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
 #'     package = "pycwa")
 #' \donttest{
-#'   if (pycwa:::check_python_requirements()) {
+#'   if (pycwa:::have_python_requirements()) {
 #'     sums = pycwa::activity_summary(epoch_file, model_dir = tempdir())
 #'   }
 #' }

@@ -7,3 +7,4 @@
 ^data-raw$
 ^requirements\.txt$
 ^\.github$
+^inst/acc/java/*\.class$

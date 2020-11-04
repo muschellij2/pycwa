@@ -79,6 +79,7 @@ py_convert_cwa = function(
   if (!file.exists(java)) {
     warning("Java is required for py_convert_cwa, cannot find java in path")
   }
+  cp_java()
 
   rawOutput = TRUE
   npyOutput = TRUE

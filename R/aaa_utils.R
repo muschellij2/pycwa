@@ -42,3 +42,18 @@ install_python_requirements = function(
   res = check_python_requirements(packages = packages)
   return(res)
 }
+
+cp_java = function() {
+  x = system.file("acc", "java", "AccelerometerParser.class", package = "pycwa")
+  if (!file.exists(x)) {
+    java_dir = system.file("acc", "java", package = "pycwa")
+    java_dir = normalizePath(java_dir, winslash = "/")
+    jar =  paste0(java_dir, "/JTransforms-3.1-with-dependencies.jar")
+    args = c("-cp", jar, paste0(java_dir, "/*.java"))
+    java = Sys.which("javac")
+    if (!file.exists(java)) {
+      warning("javac is required for py_convert_cwa, cannot find java in path")
+    }
+    try(system2("javac", args = args))
+  }
+}

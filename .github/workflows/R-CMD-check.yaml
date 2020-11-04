@@ -74,11 +74,6 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "16.04"))')
 
-      - name: "Conda path"
-        run: |
-          echo "/usr/local/miniconda/condabin" >> $GITHUB_PATH
-          echo "/usr/local/miniconda/condabin" >> $PATH  
-
       - name: "Setup Python"
         uses: conda-incubator/setup-miniconda@v1.7.0
         with:
@@ -87,11 +82,17 @@ jobs:
           activate-environment: r-reticulate
 
 
+      - name: "Conda path"
+        run: |
+          echo "/usr/local/miniconda/condabin" >> $GITHUB_PATH || true ;
+          echo "/usr/local/miniconda/condabin" >> $PATH  || true ;
+
+
       - name: "Conda info"
         shell: bash -l {0}      
         run: |
           conda info
-          conda list  
+          conda list         
        
 
       - name: Install dependencies

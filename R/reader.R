@@ -132,6 +132,12 @@ py_convert_cwa = function(
     }
     javaClassPath = ""
   } else {
+    acc_file = system.file("acc", "java", "AccelerometerParser.class",
+                           package = "pycwa")
+    if (!file.exists(acc_file)) {
+      stop("AccelerometerParser.class file not found - will fail!")
+    }
+
     dir = system.file("acc", "java", package = "pycwa")
     dir = normalizePath(dir, winslash = "/")
     jar =  paste0(dir, "/JTransforms-3.1-with-dependencies.jar")

@@ -55,5 +55,6 @@ cp_java = function() {
       warning("javac is required for py_convert_cwa, cannot find java in path")
     }
     try(system2("javac", args = args))
+    try(system2("javac.exe", args = args))
   }
 }

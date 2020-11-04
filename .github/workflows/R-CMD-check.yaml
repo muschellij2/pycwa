@@ -83,9 +83,11 @@ jobs:
 
       - name: Install python dependencies
         run: |
-          reticulate::install_miniconda()
-          x = readLines("requirements.txt")
-          reticulate::py_install(x)
+          check = file.exists("requirements.txt")
+          if (!requireNamespace("reticulate")  & check) install.packages("reticulate")
+          if (check) reticulate::install_miniconda()
+          if (check) x = readLines("requirements.txt")
+          if (check) reticulate::py_install(x)
         shell: Rscript {0}        
 
       - name: Session info

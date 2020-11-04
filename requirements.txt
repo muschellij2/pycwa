@@ -1,10 +1,7 @@
 argparse
 joblib
-matplotlib
 numpy
 scipy 
 pandas
 scikit-learn
-sphinx
-sphinx-rtd-theme
 statsmodels

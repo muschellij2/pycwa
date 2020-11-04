@@ -94,11 +94,11 @@ Read Axivity CWA file
 }
 \examples{
 file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
-if (pycwa:::check_cwa_packages()) {
+if (pycwa:::have_python_requirements()) {
     res = pycwa::py_convert_cwa(file)
 }
 \donttest{
-  if (pycwa:::check_cwa_packages()) {
+  if (pycwa:::have_python_requirements()) {
     df = pycwa::py_read_cwa(file, startTime = "2019-02-26T10:55:15")
   }
 }

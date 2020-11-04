@@ -1,39 +1,3 @@
-check_cwa_packages = function() {
-  packages = c("argparse",
-               "joblib",
-               # "matplotlib",
-               "numpy",
-               "scipy",
-               "pandas",
-               "scikit-learn" = "sklearn",
-               # "sphinx",
-               # "sphinx-rtd-theme",
-               "statsmodels"
-  )
-  n = names(packages)
-  names(packages)[n == ""] = packages[n == ""]
-  if (!reticulate::py_available(initialize = TRUE)) {
-    return(FALSE)
-  }
-  sapply(packages, reticulate::py_module_available)
-  res = sapply(packages, reticulate::py_module_available)
-
-  if (any(!res)) {
-    no_pkg = names(res)[!res]
-    tfile = tempfile()
-    dput(no_pkg, file = tfile)
-    np = readLines(tfile)
-    msg = paste0(paste(no_pkg, collapse = ", "),
-                 " packages not found, please try",
-                 " to install using reticulate::py_install(",
-                 np, ", pip = TRUE)\n",
-                 "pycwa may not work")
-    warning(msg)
-  }
-  return(all(res))
-}
-
-
 #' Read Axivity CWA file
 #'
 #' @param file the <.cwa/.cwa.gz> file to process
@@ -78,11 +42,11 @@ check_cwa_packages = function() {
 #' @return A list of files for the output
 #' @examples
 #' file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
-#' if (pycwa:::check_cwa_packages()) {
+#' if (pycwa:::have_python_requirements()) {
 #'     res = pycwa::py_convert_cwa(file)
 #' }
 #' \donttest{
-#'   if (pycwa:::check_cwa_packages()) {
+#'   if (pycwa:::have_python_requirements()) {
 #'     df = pycwa::py_read_cwa(file, startTime = "2019-02-26T10:55:15")
 #'   }
 #' }
@@ -109,7 +73,7 @@ py_convert_cwa = function(
                     "omconvert"),
   javaHeapSpace = NULL) {
 
-  check_cwa_packages()
+  check_python_requirements()
   java = Sys.which("java")
   if (!file.exists(java)) {
     warning("Java is required for py_convert_cwa, cannot find java in path")

@@ -52,7 +52,7 @@
 #' epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
 #'     package = "pycwa")
 #' \donttest{
-#'   if (pycwa:::check_cwa_packages()) {
+#'   if (pycwa:::check_python_packages()) {
 #'     sums = pycwa::activity_summary(epoch_file, model_dir = tempdir())
 #'   }
 #' }
@@ -80,7 +80,7 @@ activity_summary = function(
   m10l5 = FALSE
 ) {
 
-  check_cwa_packages()
+  check_python_requirements()
 
   py_dir = system.file("acc", package = "pycwa")
   accelerometer = reticulate::import_from_path(

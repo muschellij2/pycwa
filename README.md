@@ -10,6 +10,8 @@ pycwa
 status](https://travis-ci.com/muschellij2/pycwa.svg?branch=master)](https://travis-ci.com/muschellij2/pycwa)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/muschellij2/pycwa?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/pycwa)
+[![R build
+status](https://github.com/muschellij2/pycwa/workflows/R-CMD-check/badge.svg)](https://github.com/muschellij2/pycwa/actions)
 <!-- badges: end -->
 
 The goal of pycwa is to …

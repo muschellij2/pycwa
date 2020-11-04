@@ -44,7 +44,7 @@
 #' reticulate::py_config()
 #' file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
 #' if (pycwa:::have_python_requirements()) {
-#'     res = pycwa::py_convert_cwa(file)
+#'     res = pycwa::py_convert_cwa(file, verbose = 2)
 #' }
 #' \donttest{
 #'   if (pycwa:::have_python_requirements()) {
@@ -172,7 +172,9 @@ py_convert_cwa = function(
 
   summary = reticulate::py_to_r(reticulate::dict())
 
-
+  if (verbose > 1) {
+    message(paste0("javaClassPath is ", javaClassPath))
+  }
   info = accelerometer$device$processInputFileToEpoch(
     inputFile = file,
     timeZone = timeZone,

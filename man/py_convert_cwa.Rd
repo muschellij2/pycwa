@@ -96,7 +96,7 @@ Read Axivity CWA file
 reticulate::py_config()
 file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
 if (pycwa:::have_python_requirements()) {
-    res = pycwa::py_convert_cwa(file)
+    res = pycwa::py_convert_cwa(file, verbose = 2)
 }
 \donttest{
   if (pycwa:::have_python_requirements()) {

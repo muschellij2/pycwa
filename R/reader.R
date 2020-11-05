@@ -47,7 +47,8 @@
 #' dir = system.file("acc", "java", package = "pycwa")
 #' dir = normalizePath(dir, winslash = "/")
 #' jar =  paste0(dir, "/JTransforms-3.1-with-dependencies.jar")
-#' javaClassPath = paste0(dir, ":", jar)
+#' sep = ifelse(.Platform$OS.type == "windows", ";", ":")
+#' javaClassPath = paste0(dir, sep, jar)
 #' print(javaClassPath)
 #' if (pycwa:::have_python_requirements()) {
 #'     res = pycwa::py_convert_cwa(file, verbose = 2)
@@ -147,7 +148,8 @@ py_convert_cwa = function(
     dir = system.file("acc", "java", package = "pycwa")
     dir = normalizePath(dir, winslash = "/")
     jar =  paste0(dir, "/JTransforms-3.1-with-dependencies.jar")
-    javaClassPath = paste0(dir, ":", jar)
+    sep = ifelse(.Platform$OS.type == "windows", ";", ":")
+    javaClassPath = paste0(dir, sep, jar)
   }
 
 

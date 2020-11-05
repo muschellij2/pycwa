@@ -41,15 +41,8 @@
 #' @export
 #' @return A list of files for the output
 #' @examples
-#' reticulate::py_config()
 #' file =  system.file("extdata", "ax3_testfile.cwa.gz", package = "pycwa")
 #' print(pycwa:::check_python_requirements())
-#' dir = system.file("acc", "java", package = "pycwa")
-#' dir = normalizePath(dir, winslash = "/")
-#' jar =  paste0(dir, "/JTransforms-3.1-with-dependencies.jar")
-#' sep = ifelse(.Platform$OS.type == "windows", ";", ":")
-#' javaClassPath = paste0(dir, sep, jar)
-#' print(javaClassPath)
 #' if (pycwa:::have_python_requirements()) {
 #'     res = pycwa::py_convert_cwa(file, verbose = 2)
 #' }

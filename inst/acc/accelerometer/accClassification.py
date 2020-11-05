@@ -38,7 +38,10 @@ def activityClassification(epochFile,
 
     X = epochFile
     featureColsFile = getFileFromTar(activityModel, 'featureCols.txt').getvalue()
-    featureColsList = featureColsFile.decode().split('\n')
+    featureColsList = featureColsFile.decode()
+    # windows
+    featureColsList = featureColsList.replace('\r', '\n')
+	featureColsList = featureColsList.split('\n')
     featureCols = list(filter(None,featureColsList))
 
     with pd.option_context('mode.use_inf_as_null', True):

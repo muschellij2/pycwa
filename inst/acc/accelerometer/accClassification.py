@@ -16,7 +16,8 @@ import warnings
 
 
 def activityClassification(epochFile,
-    activityModel="activityModels/doherty-may20.tar"):
+    activityModel="activityModels/doherty-may20.tar",
+    verbose = True):
     """Perform classification of activity states from epoch feature data
 
     Based on a balanced random forest with a Hidden Markov Model containing
@@ -41,6 +42,8 @@ def activityClassification(epochFile,
     featureColsList = featureColsFile.decode()
     # windows
     featureColsList = featureColsList.replace('\r', '\n')
+    if verbose:
+        print("featureColsList %s", featureColsList)    
     featureColsList = featureColsList.split('\n')
     featureCols = list(filter(None,featureColsList))
 

@@ -11,3 +11,18 @@ testthat::test_that("install requirements", {
     testthat::expect_true(pycwa:::have_python_requirements())
   }
 })
+
+
+testthat::test_that("dl model", {
+  testthat::skip_on_cran()
+
+  res = pycwa::download_activity_model(outdir = tempdir())
+  fname = "featureCols.txt"
+  out = untar(res, exdir = tempdir(), files = fname)
+  file = file.path(tempdir(), fname)
+  x = readLines(file)
+  cat(x, sep = ",")
+  bad = tools::showNonASCII(file)
+  testthat::expect_length(bad, 0)
+  testthat::expect_true("zfft1" %in% x)
+})

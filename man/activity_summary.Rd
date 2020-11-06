@@ -102,7 +102,6 @@ Get overall activity summary from input epoch file. This is achieved by
 }
 }
 \examples{
-reticulate::py_config()
 epoch_file =  system.file("extdata", "ax3_testfile-epoch.csv.gz",
     package = "pycwa")
 \donttest{

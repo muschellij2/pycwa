@@ -13,7 +13,7 @@ testthat::test_that("py_read_cwa consistent", {
 testthat::test_that("summary data giving same answer", {
   skip_python()
   res = py_convert_cwa(file)
-  sums = activity_summary(res$epochFile, model_dir = tempdir())
+  sums = activity_summary(res$epochFile, model_dir = tempdir(), verbose = 2)
 
   testthat::expect_equal(
     mean(sums$epochData$enmoTrunc),

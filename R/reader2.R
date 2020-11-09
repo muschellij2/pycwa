@@ -53,7 +53,7 @@
 #'     package = "pycwa")
 #' \donttest{
 #'   if (pycwa:::have_python_requirements()) {
-#'     sums = pycwa::activity_summary(epoch_file, model_dir = tempdir())
+#'     sums = pycwa::activity_summary(epoch_file, model_dir = tempdir(), verbose = 2)
 #'   }
 #' }
 activity_summary = function(
@@ -86,6 +86,9 @@ activity_summary = function(
   accelerometer = reticulate::import_from_path(
     "accelerometer", py_dir)
 
+  bn = sub("[.]csv.*", "", basename(epochFile))
+  bn = sub("-epoch", "", bn)
+
   activityClassification = as.logical(activityClassification)
   fe = file.exists(activityModel)
   # need to download
@@ -106,9 +109,6 @@ activity_summary = function(
     dir.create(outputFolder, recursive = TRUE)
   }
 
-
-  bn = sub("[.]csv.*", "", basename(epochFile))
-  bn = sub("-epoch", "", bn)
 
   if (is.null(nonWearFile)) {
     nonWearFile = file.path(outputFolder, paste0(bn,  "-nonWearBouts.csv.gz"))
@@ -139,7 +139,12 @@ activity_summary = function(
     verbose = verbose
   )
   names(out) = c("epochData", "labels")
-  out$epochData$time = rownames(out$epochData)
+  if (verbose > 1) {
+    print(utils::head(out))
+  }
+  if (!is.null(rownames(out$epochData))) {
+    out$epochData$time = rownames(out$epochData)
+  }
   rownames(out$epochData) = NULL
 
   out$nonWearFile = nonWearFile

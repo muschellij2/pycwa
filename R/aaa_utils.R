@@ -7,11 +7,10 @@ have_python_requirements = function(
     tfile = tempfile()
     dput(no_pkg, file = tfile)
     np = readLines(tfile)
-    msg = paste0(paste(no_pkg, collapse = ", "),
+    msg = paste0("pycwa may not work: ", paste(no_pkg, collapse = ", "),
                  " packages not found, please try",
                  " to install using reticulate::py_install(",
-                 np, ")\n",
-                 "pycwa may not work")
+                 np, ")\n")
     warning(msg)
   }
   return(all(res))

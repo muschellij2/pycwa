@@ -119,7 +119,7 @@ def getActivitySummary(epochFile, nonWearFile, summary,
 
     # Predict activity from features, and add label column
     if activityClassification:
-        e, labels = accClassification.activityClassification(e, activityModel)
+        e, labels = accClassification.activityClassification(e, activityModel, verbose = verbose)
     else:
         labels = []
 

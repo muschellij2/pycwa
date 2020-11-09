@@ -15,7 +15,8 @@ download_activity_model(
 
 \item{outdir}{output directory for tarball}
 
-\item{...}{additional arguments to pass to \code{\link{download.file}}}
+\item{...}{additional arguments to pass to \code{\link{download.file}},
+other than \code{mode}}
 }
 \value{
 The file path to the tarball

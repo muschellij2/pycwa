@@ -2,7 +2,8 @@
 #'
 #' @param model Model to download for activity classification
 #' @param outdir output directory for tarball
-#' @param ... additional arguments to pass to \code{\link{download.file}}
+#' @param ... additional arguments to pass to \code{\link{download.file}},
+#' other than \code{mode}
 #'
 #' @return The file path to the tarball
 #' @export
@@ -23,7 +24,7 @@ download_activity_model = function(
   }
   destfile = file.path(outdir, paste0(model, ".tar"))
   if (!file.exists(destfile)) {
-    res = utils::download.file(url = url, destfile = destfile, ...)
+    res = utils::download.file(url = url, destfile = destfile, mode = "wb", ...)
   }
   if (!file.exists(destfile)) {
     warning("Model did not download")

@@ -84,7 +84,7 @@ activity_summary = function(
 
   py_dir = system.file("acc", package = "pycwa")
   accelerometer = reticulate::import_from_path(
-    "accelerometer", py_dir)
+    "accelerometer", py_dir, convert = FALSE)
 
   bn = sub("[.]csv.*", "", basename(epochFile))
   bn = sub("-epoch", "", bn)
@@ -138,6 +138,10 @@ activity_summary = function(
     m10l5 = m10l5,
     verbose = verbose
   )
+  if (verbose > 1) {
+    print(out)
+  }
+  out = reticulate::py_to_r(out)
   names(out) = c("epochData", "labels")
   if (verbose > 1) {
     print(utils::head(out))

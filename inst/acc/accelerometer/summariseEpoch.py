@@ -151,6 +151,7 @@ def getActivitySummary(epochFile, nonWearFile, summary,
 
     # Trying to get around time issue for columns
     time = e.index.to_frame()
+    time = time.reset_index(drop = True)
     e = e.reset_index(drop = True)
 
     # Return physical activity summary

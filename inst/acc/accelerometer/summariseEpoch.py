@@ -150,10 +150,11 @@ def getActivitySummary(epochFile, nonWearFile, summary,
     writeMovementSummaries(e, labels, summary, useRecommendedImputation)
 
     # Trying to get around time issue for columns
-    e = e.rename_axis("time").reset_index()
+    time = e.index.to_frame()
+    e = e.reset_index(drop = True)
 
     # Return physical activity summary
-    return e, labels
+    return e, labels, time
 
 
 

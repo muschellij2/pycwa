@@ -142,14 +142,15 @@ activity_summary = function(
     print(out)
   }
   out = reticulate::py_to_r(out)
-  names(out) = c("epochData", "labels")
+  names(out) = c("epochData", "labels", "time")
   if (verbose > 1) {
     print(utils::head(out))
   }
-  if (!is.null(rownames(out$epochData)) &&
-      !"time" %in% colnames(out$epochData)) {
-    out$epochData$time = rownames(out$epochData)
+  out$time = out$time$time
+  if (!"time" %in% colnames(out$epochData)) {
+    out$epochData$time = out$time
   }
+  out$time = NULL
   rownames(out$epochData) = NULL
 
   out$nonWearFile = nonWearFile

@@ -146,7 +146,8 @@ activity_summary = function(
   if (verbose > 1) {
     print(utils::head(out))
   }
-  if (!is.null(rownames(out$epochData))) {
+  if (!is.null(rownames(out$epochData)) &&
+      !"time" %in% colnames(out$epochData)) {
     out$epochData$time = rownames(out$epochData)
   }
   rownames(out$epochData) = NULL

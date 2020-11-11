@@ -34,7 +34,6 @@ jobs:
           - {os: ubuntu-16.04,   r: 'oldrel',  rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
           - {os: ubuntu-16.04,   r: '3.5',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
           - {os: ubuntu-16.04,   r: '3.4',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
-          - {os: ubuntu-16.04,   r: '3.3',     rspm: "https://packagemanager.rstudio.com/cran/__linux__/xenial/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -84,7 +83,7 @@ jobs:
       - name: Install python dependencies
         run: |
           check = file.exists("requirements.txt")
-          if (!requireNamespace("reticulate")  & check) install.packages("reticulate")
+          if (!requireNamespace("reticulate") & check) install.packages("reticulate")
           if (check) reticulate::install_miniconda()
           if (check) x = readLines("requirements.txt")
           if (check) reticulate::py_install(x, method = "conda")

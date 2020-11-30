@@ -16,7 +16,8 @@ testthat::test_that("install requirements", {
 testthat::test_that("dl model", {
   testthat::skip_on_cran()
 
-  res = pycwa::download_activity_model(outdir = tempdir())
+  res = pycwa::download_activity_model(outdir = tempdir(),
+                                       model =  "doherty-may20")
   fname = "featureCols.txt"
   out = untar(res, exdir = tempdir(), files = fname)
   file = file.path(tempdir(), fname)

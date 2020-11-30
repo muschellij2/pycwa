@@ -13,7 +13,8 @@ testthat::test_that("py_read_cwa consistent", {
 testthat::test_that("summary data giving same answer", {
   skip_python()
   res = py_convert_cwa(file)
-  sums = activity_summary(res$epochFile, model_dir = tempdir(), verbose = 2)
+  sums = activity_summary(res$epochFile, model_dir = tempdir(), verbose = 2,
+                          activityModel = "doherty-may20")
 
   testthat::expect_equal(
     mean(sums$epochData$enmoTrunc),
@@ -22,6 +23,24 @@ testthat::test_that("summary data giving same answer", {
   testthat::expect_equal(
     sums$labels,
     c("moderate", "sedentary", "sleep", "tasks-light", "walking")
+  )
+})
+
+
+
+testthat::test_that("summary data giving same answer- new walmsley-nov20", {
+  skip_python()
+  res = py_convert_cwa(file)
+  sums = activity_summary(res$epochFile, model_dir = tempdir(), verbose = 2,
+                          activityModel = "walmsley-nov20")
+
+  testthat::expect_equal(
+    mean(sums$epochData$enmoTrunc),
+    0.0242792
+  )
+  testthat::expect_equal(
+    sums$labels,
+    c("MVPA", "light", "sedentary", "sleep")
   )
 })
 

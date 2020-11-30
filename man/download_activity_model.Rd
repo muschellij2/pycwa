@@ -5,7 +5,7 @@
 \title{Download Activity Model}
 \usage{
 download_activity_model(
-  model = c("doherty-may20", "willetts-may20"),
+  model = c("walmsley-nov20", "doherty-may20", "willetts-may20"),
   outdir = NULL,
   ...
 )

@@ -20,7 +20,7 @@ activity_summary(
   minNonWearDuration = 60L,
   useRecommendedImputation = TRUE,
   activityClassification = TRUE,
-  activityModel = c("doherty-may20", "willetts-may20"),
+  activityModel = c("walmsley-nov20", "doherty-may20", "willetts-may20"),
   model_dir = NULL,
   psd = TRUE,
   fourierFrequency = TRUE,

@@ -12,7 +12,7 @@
 #' download_activity_model(outdir = tempdir())
 #' }
 download_activity_model = function(
-  model = c("doherty-may20", "willetts-may20"),
+  model = c("walmsley-nov20", "doherty-may20", "willetts-may20"),
   outdir = NULL,
   ...
 ) {

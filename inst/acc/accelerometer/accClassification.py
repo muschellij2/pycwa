@@ -16,7 +16,7 @@ import warnings
 
 
 def activityClassification(epochFile,
-    activityModel="activityModels/doherty-may20.tar",
+    activityModel="activityModels/walmsley-nov20.tar",
     verbose = True):
     """Perform classification of activity states from epoch feature data
 
